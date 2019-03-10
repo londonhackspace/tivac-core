@@ -539,11 +539,13 @@ void *__dso_handle = 0;
  */
 typedef char *caddr_t;
 
+extern char end asm ("end"); /* Defined by linker */
+static char * heap_end;
+
 caddr_t _sbrk (int incr)
 {
     double current_sp;
-    extern char end asm ("end"); /* Defined by linker */
-    static char * heap_end;
+    
     char * prev_heap_end;
 
     if (heap_end == NULL) {
@@ -561,6 +563,17 @@ caddr_t _sbrk (int incr)
     else {
         return NULL;
     }
+}
+
+size_t get_used_heap_mem()
+{
+    return heap_end - &end;
+}
+
+size_t get_remaining_heap_mem()
+{
+    double current_sp;
+    return (caddr_t)&current_sp - (caddr_t)heap_end;
 }
 
 __attribute__((weak))

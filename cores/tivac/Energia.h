@@ -301,6 +301,9 @@ unsigned long micros();
 unsigned long millis();
 void timerInit();
 void registerSysTickCb(void (*userFunc)(uint32_t));
+
+size_t get_used_heap_mem();
+size_t get_remaining_heap_mem();
 #ifdef __cplusplus
 } // extern "C"
 #endif
