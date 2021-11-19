@@ -632,10 +632,10 @@ extern int _getpid ( void )
     return -1 ;
 }
 
-/*
+
 __attribute__((weak))
 extern void _exit (void)
 {
-
+    while(1);
 }
-*/
+
