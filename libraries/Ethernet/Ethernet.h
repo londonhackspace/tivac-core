@@ -32,7 +32,7 @@ public:
 	void begin(uint8_t *mac_address, IPAddress local_ip, IPAddress dns_server, IPAddress gateway, IPAddress subnet);
 
 	/* Start ethernet in DHCP mode and use internal MAC */
-	int begin() { begin(0); };
+	int begin() {return begin(0); };
 	void begin(IPAddress local_ip) { begin(0, local_ip); }
 	void begin(IPAddress local_ip, IPAddress dns_server) { begin(0, local_ip, dns_server); };
 	void begin(IPAddress local_ip, IPAddress dns_server, IPAddress gateway) { begin(0, local_ip, dns_server, gateway); };
